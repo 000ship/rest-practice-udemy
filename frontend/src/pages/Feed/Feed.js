@@ -130,7 +130,7 @@ class Feed extends Component {
             })
             .then(resData => {
                 const post = {
-                    _id: resData.post._id,
+                    id: resData.post.id,
                     title: resData.post.title,
                     content: resData.post.content,
                     creator: resData.post.creator,
