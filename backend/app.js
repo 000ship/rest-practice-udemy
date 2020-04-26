@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 
 const feedRoutes = require('./routes/feed');
 
+const sequelize = require('./util/database');
+const Post = require('./models/post');
+
 const app = express();
 
 // app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
@@ -18,4 +21,9 @@ app.use((req, res, next) => {
 
 app.use('/feed', feedRoutes);
 
-app.listen(8080);
+// sequelize.sync({ force: true })
+sequelize.sync()
+    .then(result => {
+        app.listen(8080);
+    })
+    .catch(err => console.log(err));
