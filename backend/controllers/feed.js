@@ -46,7 +46,6 @@ exports.createPost = (req, res, next) => {
 }
 
 exports.getPost = (req, res, next) => {
-    console.log('######################');
     const postId = req.params.postId;
     Post.findByPk(postId)
         .then(post => {
